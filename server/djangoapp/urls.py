@@ -11,7 +11,8 @@ urlpatterns = [
     #path(route='', view=views.sample, name='sample'),
     
     # path for about view
-    #path(route='', view=views.about, name='about'),
+    path(route='', view=views.about, name='about'),
+
     # path for contact us view
 
     # path for registration
