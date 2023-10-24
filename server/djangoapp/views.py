@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 
 
 # Create your views here.
-def sample(request):  
+#def sample(request):  
     # render function takes argument  - request 
     # and return HTML as response 
-    return render(request, "sample.html")
+    #return render(request, "sample.html")
 
 # Create an `about` view to render a static about page
 def about(request):
