@@ -22,12 +22,16 @@ logger = logging.getLogger(__name__)
 
 # Create an `about` view to render a static about page
 def about(request):
-    return render(request, 'about.html', context)
+    context = {}
+    if request.method == "GET":
+        return render(request, 'about.html')
 
 
 # Create a `contact` view to return a static contact page
 def contact(request):
-    return render(request, 'contact.html', context)
+    context = {}
+    if request.method == "GET":
+        return render(request, 'contact.html', context)
 
 # Create a `login_request` view to handle sign in request
 # def login_request(request):
