@@ -58,7 +58,7 @@ def logout_request(request):
     # Logout user in the request
     logout(request)
     # Redirect user back to course list view
-    return redirect('djangoapp/index.html')
+    return redirect('djangoapp/login.html')
 
 
 # Create a `registration_request` view to handle sign up request
