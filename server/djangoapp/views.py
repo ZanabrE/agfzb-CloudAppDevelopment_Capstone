@@ -58,7 +58,7 @@ def logout_request(request):
     # Logout user in the request
     logout(request)
     # Redirect user back to course list view
-    return redirect('djangoapp/login.html')
+    return redirect('djangoapp/index.html')
 
 
 # Create a `registration_request` view to handle sign up request
@@ -69,9 +69,9 @@ def logout_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context = {}
-        url = "https://us-south.functions.appdomain.cloud/api/v1/web/ddcdeeb5-bec2-481e-b506-af4fdbb68aa7/dealership-package/get-dealership"
-        dealerships = get_dealers_from_cf(url)
-        context["dealership_list"] = dealerships
+        #url = "https://us-south.functions.appdomain.cloud/api/v1/web/ddcdeeb5-bec2-481e-b506-af4fdbb68aa7/dealership-package/get-dealership"
+        #dealerships = get_dealers_from_cf(url)
+        #context["dealership_list"] = dealerships
         return render(request, 'djangoapp/index.html', context)
 
 
