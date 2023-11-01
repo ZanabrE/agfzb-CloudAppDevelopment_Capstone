@@ -19,7 +19,7 @@
     <!-- Remove this line the first time you edit this file -->
     <!-- This is the index page of your Django app! -->
     <!--Add a nav bar here -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'djangoapp:index' %}"><i class="bi bi-car-front"></i> Dealership</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +68,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Username" name="username" required>
                                 <input type="password" class="form-control" placeholder="Password" name="psw" required>
-                                <button class="btn btn-primary" type="submit">Login</button>
-                                <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+                                <button class="btn btn-outline-light btn-primary" type="submit">Login</button>
+                                <a class="btn btn-outline-light btn-light-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
                             </div>
                         </form>
                     </li>
