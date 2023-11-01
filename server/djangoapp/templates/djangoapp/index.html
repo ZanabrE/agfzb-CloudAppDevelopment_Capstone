@@ -47,8 +47,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <div class="rightalign">
-                        <div class="dropdown">
+                    <div class="container-fluid">
+                        <div class="dropdown-toggle">
                             <button class="dropbtn">{{user.first_name}}</button>
                             <div class="dropdown-content">
                                 <a href="{% url 'djangoapp:logout' %}">Logout</a>
@@ -59,11 +59,11 @@
                     <!--{% if user.is_authenticated %}
                     <li>
                         <a class="btn btn-link" href="{% url 'djangoapp:login' %}">{{ user.first_name }}({{ user.username }})</a>
-                        <a class="btn btn-link" href="#">Logout</a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
                     </li>
                     {% else %}-->
                     <li>
-                        <form class="form-inline" action="#" method="post">
+                        <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
                             {% csrf_token %}
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Username" name="username" >
@@ -80,9 +80,9 @@
       </nav>
 
     <!--Add a dealer table here -->
-    {% if user.is_authenticated %}
+    <!--{% if user.is_authenticated %}
     <p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
-    {% endif %}
+    {% endif %}-->
     </body>
 
 </html>
