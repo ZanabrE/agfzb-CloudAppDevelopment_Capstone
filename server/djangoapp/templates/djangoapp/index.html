@@ -66,8 +66,8 @@
                         <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
                             {% csrf_token %}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Username" name="username" >
-                                <input type="password" class="form-control" placeholder="Password" name="psw" >
+                                <input type="text" class="form-control" placeholder="Username" name="username" required>
+                                <input type="password" class="form-control" placeholder="Password" name="psw" required>
                                 <button class="btn btn-primary" type="submit">Login</button>
                                 <a class="btn btn-link" href="#">Sign Up</a>
                             </div>
