@@ -31,12 +31,12 @@ class CarModel(models.Model):
     SEDAN = "Sedan"
     HYBRID = "Hybrid"
     SUV = "SUV"
-    VAN = "Van"
+    TRUCK = "Truck"
     TYPE = [
         (SEDAN, "Sedan"),
         (HYBRID, "Hydrid"),
         (SUV, "SUV"),
-        (VAN, "Van")
+        (TRUCK, "Truck")
     ]
 
 
