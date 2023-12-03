@@ -29,12 +29,12 @@ class CarMake(models.Model):
 class CarModel(models.Model):
 
     SEDAN = "Sedan"
-    WAGON = "Wagon"
+    HYBRID = "Hybrid"
     SUV = "SUV"
     VAN = "Van"
     TYPE = [
         (SEDAN, "Sedan"),
-        (WAGON, "Wagon"),
+        (HYBRID, "Hydrid"),
         (SUV, "SUV"),
         (VAN, "Van")
     ]
