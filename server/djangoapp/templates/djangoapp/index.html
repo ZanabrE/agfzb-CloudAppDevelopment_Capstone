@@ -45,36 +45,58 @@
                     </div>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <!--<ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                     <div class="container-fluid">
                         <div class="dropdown-toggle">
                             <button class="dropbtn">{{user.first_name}}</button>
                             <div class="dropdown-content">
-                                <a href="{% url 'djangoapp:logout' %}">Logout</a>
+                                <a href="{% url 'djangoapp:logout_request' %}">Logout</a>
                             </div>
                         </div>
                     </div>
                     {% endif %}
-                    <!--{% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
                     <li>
-                        <a class="btn btn-link" href="{% url 'djangoapp:login' %}">{{ user.first_name }}({{ user.username }})</a>
-                        <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:login_request' %}">{{ user.first_name }}({{ user.username }})</a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:logout_request' %}">Logout</a>
                     </li>
-                    {% else %}-->
+                    {% else %}
+                    {% endif %}
                     <li>
-                        <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
+                        <form class="form-inline" action="{% url 'djangoapp:login_request' %}" method="post">
                             {% csrf_token %}
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Username" name="username" required>
                                 <input type="password" class="form-control" placeholder="Password" name="psw" required>
                                 <button class="btn btn-outline-light btn-primary" type="submit">Login</button>
-                                <a class="btn btn-outline-light btn-light-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+                                <a class="btn btn-outline-light btn-light-link" href="{% url 'djangoapp:registration_request' %}">Sign Up</a>
                             </div>
                         </form>
                     </li>
+                </ul>-->
+
+                {% if not onLoginPage %}
+                    {% if not user.is_authenticated %}
+                    <form class="d-flex" action="{% url 'djangoapp:login_request' %}" method="post">
+                        {% csrf_token %}
+                        <input class="form-control form-control-sm me-2" type="username" name="username" placeholder="Username" aria-label="Username">
+                        <input class="form-control form-control-sm me-2" type="password" name="password" placeholder="Password" aria-label="Password">
+                        <button class="btn btn-sm btn-secondary" type="submit">Login</button>
+                    </form>
                     {% endif %}
-                </ul>
+                {% endif %}
+
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'djangoapp:registration_request' %}" class="mx-2 text-nowrap btn btn-sm btn-login-color">Sign Up</a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <div class="text-white">
+                        <span class="me-2">Welcome, {{user.username}}</span>
+                        <a href="{% url 'djangoapp:index' %}" class="mx-2 text-nowrap btn btn-sm btn-login-color">Log Out</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
       </nav>
