@@ -8,7 +8,7 @@ from .models import CarDealer, CarMake, CarModel
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
-from .restapis import*
+from .restapis import *
 import logging
 import json
 
