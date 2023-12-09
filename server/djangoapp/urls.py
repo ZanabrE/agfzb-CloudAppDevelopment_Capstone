@@ -10,7 +10,7 @@ urlpatterns = [
     # name the URL
     #path for to get dealership
     path(route='', view=views.get_dealerships, name='index'),
-    #path(route='', view=views.sample, name='sample'),
+    #path(route='sample', view=views.sample, name='sample'),
     
     # path for about view
     path(route='about', view=views.about, name='about'),
