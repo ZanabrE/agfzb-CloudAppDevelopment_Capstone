@@ -12,7 +12,52 @@
     <!--Add a nav bar here -->
 
     <!-- Add reviews as cards -->
+    <div class="container mt-3">
 
+        <h2>Reviews for <strong> {{dealer.full_name}} </strong></h2>
+    
+    
+        {% if user.is_authenticated %}
+        <a href="{% url 'djangoapp:add_review' id=dealer.id %}" class="btn btn-sm btn-login-color">Post a review</a>
+        {% endif %}
+    
+        {% if reviews %}
+        <div class="row">
+    
+            {% for review in reviews %}
+            <div class="col-lg-3">
+                <div class="card mt-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{review.car_make}} {{review.car_model}} {{review.car_year}} <br /><span class="text-muted fs-6">{{review.purchase_date}}</span>
+                        </h5>
+                        <h2 class="card-subtitle mb-2 text-muted">
+                            {% if review.sentiment == "positive" %}
+                            <i class="bi bi-emoji-laughing text-success"></i>
+                            {% elif review.sentiment == "negative" %}
+                            <i class="bi bi-emoji-frown text-danger"></i>
+                            {% else %}
+                            <i class="bi bi-emoji-expressionless text-secondary"></i>
+                            {% endif %}
+                        </h2>
+                        <p class="card-text">{{review.review}}</p>
+                        <ul class="list-group list-group-flush">
+    
+                        </ul>
+    
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="container mt-3">
+                <div class="alert alert-info mt-3" role="alert">
+                    No reviews have been posted yet!
+                </div>
+            </div>
+        </div>
+    
+        {% endif %}
     </body>
 
 </html>
