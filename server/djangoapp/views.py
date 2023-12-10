@@ -40,32 +40,26 @@ def contact(request):
 
 # Create a `login_request` view to handle sign in request
 def login_request(request):
-    context = {}
-    # Handles POST request
+
     if request.method == "POST":
-        # Get username and password from request.POST dictionary
         username = request.POST['username']
-        password = request.POST['psw']
-        # Try to check if provide credential can be authenticated
+        password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
-            # If user is valid, call login method to login current user
             login(request, user)
-            return redirect('djangoapp:index')
+            messages.add_message(request, messages.SUCCESS, 'Successfully logged you in!')
+            return HttpResponseRedirect(reverse("djangoapp:index"))
         else:
-            # If not, return to login page again
-            return render(request, 'djangoapp/login.html', context)
+            messages.add_message(request, messages.ERROR, 'Unable to log you in. Please try again.')
+            return render(request, 'djangoapp/login.html', {'onLoginPage':True} )
     else:
-        return render(request, 'djangoapp/login.html', context)
+        return render(request, 'djangoapp/login.html', {'onLoginPage':True} )
 
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
-    # Get the user object based on request
-    print("Log out the user `{}`".format(request.user.username))
-    # Logout user in the request
     logout(request)
-    # Redirect user back to course list view
-    return redirect('djangoapp/index.html')
+    messages.add_message(request, messages.SUCCESS, 'Successfully logged you out, have a lovely day!')
+    return HttpResponseRedirect(reverse("djangoapp:index"))
 
 
 # Create a `registration_request` view to handle sign up request
