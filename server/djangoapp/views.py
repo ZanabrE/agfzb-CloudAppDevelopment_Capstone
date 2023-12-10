@@ -11,7 +11,7 @@ from datetime import datetime
 from .restapis import *
 import logging
 import json
-
+#from .utils import * 
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -19,9 +19,11 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 #def sample(request):
-    #render function takes argument  - request 
-    #and return HTML as response 
-    #return render(request, "sample.html")
+    #if request.method == "GET":
+        #context = {}
+        #render function takes argument  - request 
+        #and return HTML as response 
+        #return render(request, 'djangoapp/sample.html', context)
 
 # Create an `about` view to render a static about page
 def about(request):
