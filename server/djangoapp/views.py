@@ -49,7 +49,7 @@ def login_request(request):
         if user is not None:
             login(request, user)
             messages.add_message(request, messages.SUCCESS, 'Successfully logged you in!')
-            return HttpResponseRedirect(reverse("djangoapp:index"))
+            return redirect("djangoapp:index")
         else:
             messages.add_message(request, messages.ERROR, 'Unable to log you in. Please try again.')
             return render(request, 'djangoapp/login.html', {'onLoginPage':True} )
@@ -60,8 +60,8 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.add_message(request, messages.SUCCESS, 'Successfully logged you out, have a lovely day!')
-    return HttpResponseRedirect(reverse("djangoapp:index"))
-
+    #return HttpResponseRedirect(reverse("djangoapp:index"))
+    return redirect("djangoapp:index")
 
 # Create a `registration_request` view to handle sign up request
 def registration_request(request):
