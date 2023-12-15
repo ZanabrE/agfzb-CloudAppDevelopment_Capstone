@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from django.contrib import messages
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 # from .models import related models
 from .models import CarDealer, CarMake, CarModel
 # from .restapis import related methods
@@ -59,8 +62,7 @@ def login_request(request):
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
-    messages.add_message(request, messages.SUCCESS, 'Successfully logged you out, have a lovely day!')
-    #return HttpResponseRedirect(reverse("djangoapp:index"))
+    messages.success(request, 'Successfully logged you out!')
     return redirect("djangoapp:index")
 
 # Create a `registration_request` view to handle sign up request
