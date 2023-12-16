@@ -88,12 +88,12 @@ def registration_request(request):
 
         # Send user feedback that the username is taken
         if userExists:
-            messages.add_message(request, messages.ERROR, 'That username is taken, please select a different username.')
+            messages.add_message(request, messages.ERROR, 'That username is taken, please use a different username.')
             return render(request, 'djangoapp/registration.html', {'firstname': first_name, 'lastname': last_name})
         else:
             user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password)
             login(request, user)
-            messages.add_message(request, messages.SUCCESS, 'Succesfully signed you in!')
+            messages.add_message(request, messages.SUCCESS, 'Succesfully signed in!')
             return redirect("djangoapp:index")
 
 
