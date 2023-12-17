@@ -91,7 +91,7 @@ def registration_request(request):
             messages.add_message(request, messages.ERROR, 'That username is taken, please use a different username.')
             return render(request, 'djangoapp/registration.html', {'firstname': first_name, 'lastname': last_name})
         else:
-            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password)
+            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=psw)
             login(request, user)
             messages.add_message(request, messages.SUCCESS, 'Succesfully signed in!')
             return redirect("djangoapp:index")
