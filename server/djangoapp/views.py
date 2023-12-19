@@ -101,9 +101,9 @@ def registration_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context = {}
-        url = "https://ernestozanab-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
-        dealerships = get_dealers_from_cf(url)
-        context["dealership_list"] = dealerships
+        #url = "https://ernestozanab-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        #dealerships = get_dealers_from_cf(url)
+        #context["dealership_list"] = dealerships
         return render(request, 'djangoapp/index.html', context)
 
 #def get_dealerships(request):
