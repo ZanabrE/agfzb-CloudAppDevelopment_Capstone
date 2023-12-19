@@ -63,6 +63,13 @@ def get_dealers_from_cf(url, **kwargs):
 
     return results
 
+# Method addition to manage the json depending on what comes back
+def get_dealer_by_id_from_cf(url, **kwargs):
+    dealer_id = kwargs.get("dealer_id")
+    # api_key = kwargs.get("api_key")
+    json_result = get_request(url, dealer_id=dealer_id)
+    return json_result['docs'][0]
+
 # Create a get_dealer_reviews_from_cf method to get reviews by dealer id from a cloud function
 # def get_dealer_by_id_from_cf(url, dealerId):
 # - Call get_request() with specified arguments
