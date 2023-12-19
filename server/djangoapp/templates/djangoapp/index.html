@@ -14,8 +14,9 @@
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
 </head>
+{% load static %}
 
-    <body>
+{% block body %}
     <!-- Remove this line the first time you edit this file -->
     <!-- This is the index page of your Django app! -->
     <!--Add a nav bar here -->
@@ -79,10 +80,34 @@
       </div>
       {% endfor %}
       {% endif %}
+    
     <!--Add a dealer table here -->
-    <!--{% if user.is_authenticated %}
-    <p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
-    {% endif %}-->
-    </body>
-
+    <div class="container mt-5">
+        <table class="table" id="table" data-filter-control="true" data-show-search-clear-button="true">
+            <thead>
+                <tr>
+                    <th data-field="id">ID</th>
+                    <th data-field="dealer">Dealer Name</th>
+                    <th data-field="city">City</th>
+                    <th data-field="address">Address</th>
+                    <th data-field="zip">Zip</th>
+                    <th data-field="state" data-filter-control="select">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dealer in dealership_list %}
+                <tr>
+                    <td>{{dealer.id}}</td>
+                    <td><a href="{% url 'djangoapp:get_dealer_details' dealer.id %}">{{dealer.full_name}}</a></td>
+                    <td>{{dealer.city}}</td>
+                    <td>{{dealer.address}}</td>
+                    <td>{{dealer.zip}}</td>
+                    <td>{{dealer.st}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+{% endblock %}
 </html>
