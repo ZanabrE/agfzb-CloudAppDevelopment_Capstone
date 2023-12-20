@@ -1,0 +1,35 @@
+html { 
+    scroll-behavior: smooth;
+}
+
+/*CSS reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*End CSS reset*/
+
+.form-background{
+    /*background-color: rgba(207, 189, 255, 0.548);*/
+    /* background-color: rgba(19, 18, 18, 0.548); */
+    /*padding: 10px;*/
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.form-small {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+
+tr:hover{
+  background-color: rgba(159, 202, 243, 0.158) !important;
+  cursor: pointer;
+  font-weight: bold !important;
+}
+
