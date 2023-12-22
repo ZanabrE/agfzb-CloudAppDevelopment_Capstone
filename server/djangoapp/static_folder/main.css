@@ -10,6 +10,11 @@ html {
 }
 /*End CSS reset*/
 
+.btn-login-color{
+    color: rgb(100, 149, 237);
+    background-color: rgb(100, 149, 237);
+}
+
 .form-background{
     /*background-color: rgba(207, 189, 255, 0.548);*/
     /* background-color: rgba(19, 18, 18, 0.548); */
