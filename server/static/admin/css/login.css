@@ -51,6 +51,7 @@
     font-size: 1em;
     clear: both;
     color: #333;
+    
 }
 
 .login .form-row #id_username, .login .form-row #id_password {
