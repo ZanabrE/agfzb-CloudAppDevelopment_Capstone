@@ -45,20 +45,27 @@ def post_request(url, json_payload, **kwargs):
 # - Parse JSON results into a CarDealer object list
 def get_dealers_from_cf(url, **kwargs):
     results = []
-    # Call get_request with a URL parameter
-    json_result = get_request(url)
+    state = kwargs.get("state")
+    if state:
+        json_result = get_request(url, state=state)
+    else:
+        json_result = get_request(url)
+
     if json_result:
-        # Get the row list in JSON as dealers
-        dealers = json_result["rows"]
-        # For each dealer object
-        for dealer in dealers:
-            # Get its content in `doc` object
-            dealer_doc = dealer["doc"]
-            # Create a CarDealer object with values in `doc` object
-            dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"], full_name=dealer_doc["full_name"],
-                                   id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],
-                                   short_name=dealer_doc["short_name"],
-                                   st=dealer_doc["st"], zip=dealer_doc["zip"])
+        # The json_result is expected to be a list of dealers, not a dictionary
+        # Loop through the list to process each dealer
+        for dealer in json_result:
+            dealer_obj = CarDealer(
+                address=dealer.get("address"),
+                city=dealer.get("city"),
+                id=dealer.get("id"),
+                lat=dealer.get("lat"),
+                long=dealer.get("long"),
+                full_name=dealer.get("full_name"),
+                st=dealer.get("st"),
+                zip=dealer.get("zip"),
+                short_name=dealer.get("short_name")
+            )
             results.append(dealer_obj)
 
     return results
