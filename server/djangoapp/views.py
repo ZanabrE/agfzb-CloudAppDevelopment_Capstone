@@ -101,7 +101,7 @@ def registration_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context = {}
-        url = "https://ernestozanab-3000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        url = "https://ernestozanab-3000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
         dealerships = get_dealers_from_cf(url)
         context["dealership_list"] = dealerships
         return render(request, 'djangoapp/index.html', context)
@@ -112,8 +112,8 @@ def get_dealerships(request):
 def get_dealer_details(request, id):
     if request.method == "GET":
         context = {}
-        review = review_results
-        dealer = dealer_result
+        reviews_url = review_results
+        dealers_url = dealer_result
         #Get the reviews
         review_results = get_dealer_reviews_from_cf(reviews_url, dealer_id=id, api_key=API_KEY)
         # get the details about the dealer itself
